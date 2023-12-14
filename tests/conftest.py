@@ -13,4 +13,5 @@ def driver():
 def browser():
     browser = driver()
     browser.get(Config('qa').base_url)
-    return browser
+    yield browser
+    browser.close()
