@@ -51,10 +51,10 @@ class AccountRegisterPage(BasePage):
         return self.driver.find_element(By.ID, self._confirm_password_field_id)
 
     def agree_checkbox(self):
-        return self.driver.find_element(By.ID, self._agree_checkbox_name)
+        return self.driver.find_element(By.NAME, self._agree_checkbox_name)
 
     def submit_btn(self):
-        return self.driver.find_element(By.ID, self._submit_btn_xpath)
+        return self.driver.find_element(By.XPATH, self._submit_btn_xpath)
 
     # Business logic
 

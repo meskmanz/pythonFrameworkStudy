@@ -1,5 +1,8 @@
+import string
+
 from pages.accout_register_page import AccountRegisterPage
 from pages.home_page import HomePage
+from utils.string import random_string
 
 
 class TestHomePage:
@@ -17,6 +20,8 @@ class TestHomePage:
         hp = HomePage(browser)
         hp.open_registration_form()
         arp = AccountRegisterPage(browser)
-        arp.fill_the_form(firstname='Pavlo', lastname='V', email='test@mail.com', phone='123', address='1 New Ave',
-                          city='Lviv', country='Ukraine', region="L'vivs'ka Oblast'")
+        email = f'{random_string()}@gmail.com'
+        arp.fill_the_form(firstname='Pavlo', lastname='V', email=email, phone=random_string(chars=string.digits),
+                          address='1 New Ave', city='Lviv', country='Ukraine', region="L'vivs'ka Oblast'",
+                          password='test', confirm_password='test', agree=True, submit=True)
         assert True
