@@ -1,9 +1,7 @@
-import logging
-
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
-
+from utils.logger import Logger
 
 
 class HomePage(BasePage):
@@ -14,6 +12,7 @@ class HomePage(BasePage):
     _account_xpath = '//div[@id="top-links"]/ul/li/a[@class="dropdown-toggle"]'
     _register_xpath = '//div[@id="top-links"]//a[contains(@href, "register")]'
     _result_label_xpath = '//div[@id="content"]/h1'
+    log = Logger().log()
 
     # Elements
 
@@ -38,11 +37,11 @@ class HomePage(BasePage):
     # Business Logic
 
     def search(self, text):
-        logging.info(f'Do search for: {text}')
+        self.log.info(f'Do search for: {text}')
         self.search_text_field().send_keys(text)
         self.search_btn().click()
 
     def open_registration_form(self):
-        logging.info('Open registration form')
+        self.log.info('Open registration form')
         self.account_btn().click()
         self.register_btn().click()
