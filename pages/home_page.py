@@ -4,12 +4,13 @@ from pages.base_page import BasePage
 
 
 class HomePage(BasePage):
-    _logo_xpath = '//img[@class="img-fluid"]'
+    _logo_xpath = '//div[@id="logo"]/a/img'
     _search_form_xpath = '//div[@id="search"]'
     _search_textfield_xpath = f'{_search_form_xpath}/input'
     _search_btn_xpath = f'{_search_form_xpath}/span/button'
     _account_xpath = '//div[@id="top-links"]/ul/li/a[@class="dropdown-toggle"]'
     _register_xpath = '//div[@id="top-links"]//a[contains(@href, "register")]'
+    _result_label_xpath = '//div[@id="content"]/h1'
 
     # Elements
 
@@ -27,6 +28,9 @@ class HomePage(BasePage):
 
     def register_btn(self):
         return self.driver.find_element(By.XPATH, self._register_xpath)
+
+    def result_label(self):
+        return self.driver.find_element(By.XPATH, self._result_label_xpath)
 
     # Business Logic
 
