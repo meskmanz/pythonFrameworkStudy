@@ -1,6 +1,9 @@
+import logging
+
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
+
 
 
 class HomePage(BasePage):
@@ -35,9 +38,11 @@ class HomePage(BasePage):
     # Business Logic
 
     def search(self, text):
+        logging.info(f'Do search for: {text}')
         self.search_text_field().send_keys(text)
         self.search_btn().click()
 
     def open_registration_form(self):
+        logging.info('Open registration form')
         self.account_btn().click()
         self.register_btn().click()

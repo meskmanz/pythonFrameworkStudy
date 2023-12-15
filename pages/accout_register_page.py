@@ -1,3 +1,5 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
@@ -60,6 +62,7 @@ class AccountRegisterPage(BasePage):
 
     def fill_the_form(self, firstname=None, lastname=None, email=None, phone=None, address=None, city=None,
                       country=None, region=None, password=None, confirm_password=None, agree=False, submit=False):
+        logging.info('Fill in registration form')
         if firstname is not None:
             self.firstname_textfield().send_keys(firstname)
         if lastname is not None:
