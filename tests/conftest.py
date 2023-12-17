@@ -11,16 +11,21 @@ data_path = os.path.join(Path(__file__).absolute().parent.parent, 'data', 'test_
 def pytest_addoption(parser):
     # If browser is not set in cmd Chrome will be used by default
     parser.addoption("--browser", default="chrome")
+    parser.addoption("--headless")
 
 
 @fixture()
-def browser(request):
-    return request.config.getoption("--browser")
+def parameters(request):
+    return {'browser': request.config.getoption("--browser"),
+            'headless': request.config.getoption("--headless")}
 
 
 @fixture()
-def setup(browser):
-    web_driver = Driver(browser).get_browser()
+def setup(parameters):
+    try:
+        web_driver = Driver(parameters['browser'], eval(parameters['headless'])).get_browser()
+    except NameError:
+        raise Exception("'--headless' parameter must be True or False")
     web_driver.get(Config('qa').base_url)
     yield web_driver
     web_driver.close()
