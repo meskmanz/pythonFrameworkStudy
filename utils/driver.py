@@ -1,16 +1,39 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+
+from utils.logger import Logger
 
 
 class Driver:
-    browsers = {'chrome': webdriver.Chrome,
-                'firefox': webdriver.Firefox}
+    def __init__(self, browser, headless=False):
+        self._browser = self._driver(browser, headless)
 
-    def __init__(self, browser='Chrome'):
-        self._browser = self.get_browser(browser)
+    def _driver(self, browser, headless):
+        Logger().log().info(f'Launch {browser} browser')
+        if browser.lower() == 'chrome':
+            web_driver = self._chrome_driver(headless=headless)
+        elif browser.lower() == 'firefox':
+            web_driver = self._firefox_driver(headless=headless)
+        else:
+            raise Exception(f'{browser} is not supported browsers')
+        web_driver.implicitly_wait(10)  # seconds
+        return web_driver
 
-    def get_browser(self, browser):
-        return self.browsers[browser.lower()]()
+    def _chrome_driver(self, headless):
+        chrome_options = ChromeOptions()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--window-size=1920,1080')
+        chrome_options.add_argument('--disable-gpu')
+        if headless:
+            chrome_options.add_argument('--headless')
+        return webdriver.Chrome(options=chrome_options)
 
-    @property
-    def browser(self):
+    def _firefox_driver(self, headless):
+        firefox_options = FirefoxOptions()
+        if headless:
+            firefox_options.add_argument("--headless")
+        return webdriver.Firefox(options=firefox_options)
+
+    def get_browser(self):
         return self._browser

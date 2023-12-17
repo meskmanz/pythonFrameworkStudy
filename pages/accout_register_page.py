@@ -1,3 +1,5 @@
+from utils.logger import Logger
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
@@ -17,6 +19,7 @@ class AccountRegisterPage(BasePage):
     _confirm_password_field_id = 'input-confirm'
     _agree_checkbox_name = 'agree'
     _submit_btn_xpath = '//input[@type="submit"]'
+    log = Logger().log()
 
     # Elements
 
@@ -60,6 +63,7 @@ class AccountRegisterPage(BasePage):
 
     def fill_the_form(self, firstname=None, lastname=None, email=None, phone=None, address=None, city=None,
                       country=None, region=None, password=None, confirm_password=None, agree=False, submit=False):
+        self.log.info('Fill in registration form')
         if firstname is not None:
             self.firstname_textfield().send_keys(firstname)
         if lastname is not None:
