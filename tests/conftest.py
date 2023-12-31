@@ -11,7 +11,7 @@ data_path = os.path.join(Path(__file__).absolute().parent.parent, 'data', 'test_
 def pytest_addoption(parser):
     # If browser is not set in cmd Chrome will be used by default
     parser.addoption("--browser", default="chrome")
-    parser.addoption("--headless")
+    parser.addoption("--headless", default="False")
 
 
 @fixture()
