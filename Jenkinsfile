@@ -4,14 +4,6 @@ pipeline {
     PATH = "/home/jenkins/.local/bin:${env.PATH}"
   }
     stages {
-        stage('Git Checkout') {
-            steps {
-                script {
-                    git branch: 'master',
-                        url: 'https://github.com/meskmanz/pythonFrameworkStudy.git'
-                }
-            }
-        }
         stage('Setup') {
             steps {
                 script {
