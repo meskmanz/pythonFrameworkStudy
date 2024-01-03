@@ -1,25 +1,28 @@
 pipeline {
-    agent any
+    agent {label 'docker_template1'}
+    environment {
+    PATH = "/home/jenkins/.local/bin:${env.PATH}"
+  }
     stages {
-        stage('Setup') {
+        stage('Git Checkout') {
             steps {
                 script {
-                    sh 'docker build -t testapp .'
-                    sh 'docker tag testapp $DOCKER_TESTAPP_IMAGE'
+                    git branch: 'master',
+                        url: 'https://github.com/meskmanz/pythonFrameworkStudy.git'
                 }
             }
         }
-        stage('Run Script') {
+        stage('Setup') {
             steps {
-                sh "docker exec container /bin/bash -c 'pytest --headless True'"
+                script {
+                    sh 'pip3 install -r requirements.txt --break-system-packages'
+                }
             }
         }
-    }
-    post {
-        always {
-            cleanWs()
-            sh "docker stop container || true"
-            sh "docker rm container || true"
+        stage('Run Tests') {
+            steps {
+                sh 'pytest --headless=True'
+            }
         }
     }
 }
