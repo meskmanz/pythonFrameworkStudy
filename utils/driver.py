@@ -31,7 +31,7 @@ class Driver:
         if headless:
             chrome_options.add_argument('--headless')
         if platform.system() == 'Linux':
-            service = Service('/usr/local/bin/chromedriver')
+            service = Service('/usr/bin/chromedriver')
             return webdriver.Chrome(options=chrome_options, service=service)
         else:
             return webdriver.Chrome(options=chrome_options)
