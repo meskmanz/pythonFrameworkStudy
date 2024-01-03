@@ -1,6 +1,9 @@
+import platform
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.chrome.service import Service
 
 from utils.logger import Logger
 
@@ -27,7 +30,11 @@ class Driver:
         chrome_options.add_argument('--disable-gpu')
         if headless:
             chrome_options.add_argument('--headless')
-        return webdriver.Chrome(options=chrome_options)
+        if platform.system() == 'Linux':
+            service = Service('/usr/lib/chromium-browser/chromedriver')
+            return webdriver.Chrome(options=chrome_options, service=service)
+        else:
+            return webdriver.Chrome(options=chrome_options)
 
     def _firefox_driver(self, headless):
         firefox_options = FirefoxOptions()
