@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
-
 Locator = Tuple[By, str]
+
 
 class WaitType(Enum):
     DEFAULT = 20
@@ -34,23 +34,10 @@ class BasePage(object):
         try:
             return waiter.until(ec.presence_of_element_located(locator))
         except TimeoutException:
-            raise TimeoutException(f"Element {locator[1:]} not found after {waiter._timeout} seconds")
+            raise TimeoutException(f"Element {locator} not found after {waiter.timeout} seconds")
 
-    def find(self, locator: Locator):
-        return self.driver.find_element(*locator)
-
-    def click(self, locator: Locator):
-        element = self.wait(locator)
-        element.click()
-
-    def set(self, locator: Locator, text: str):
-        element = self.wait(locator)
-        element.clear()
-        element.send_keys(text)
-
-    def get_text(self, locator: Locator):
-        element = self.wait(locator)
-        return element.text
+    def find_element(self, locator: Locator) -> WebElement:
+        return self.wait(locator)
 
     def get_title(self):
         return self.driver.title

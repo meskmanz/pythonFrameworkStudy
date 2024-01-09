@@ -1,60 +1,59 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from pages.top_menu_page import TopMenuPage
 
-from pages.base_page import BasePage
 
-
-class AccountRegisterPage(BasePage):
-    __firstname_textfield_id = 'input-firstname'
-    __lastname_textfield_id = 'input-lastname'
-    __email_textfield_id = 'input-email'
-    __telephone_textfield_id = 'input-telephone'
-    __address_textfield_id = 'input-address-1'
-    __city_textfield_id = 'input-city'
-    __country_dropdown_id = 'input-country'
-    __region_dropdown_id = 'input-zone'
-    __password_field_id = 'input-password'
-    __confirm_password_field_id = 'input-confirm'
-    __agree_checkbox_name = 'agree'
-    __submit_btn_xpath = '//input[@type="submit"]'
+class AccountRegisterPage(TopMenuPage):
+    __firstname_textfield_id = (By.ID, 'input-firstname')
+    __lastname_textfield_id = (By.ID, 'input-lastname')
+    __email_textfield_id = (By.ID, 'input-email')
+    __telephone_textfield_id = (By.ID, 'input-telephone')
+    __address_textfield_id = (By.ID, 'input-address-1')
+    __city_textfield_id = (By.ID, 'input-city')
+    __country_dropdown_id = (By.ID, 'input-country')
+    __region_dropdown_id = (By.ID, 'input-zone')
+    __password_field_id = (By.ID, 'input-password')
+    __confirm_password_field_id = (By.ID, 'input-confirm')
+    __agree_checkbox_name = (By.NAME, 'agree')
+    __submit_btn_xpath = (By.XPATH, '//input[@type="submit"]')
 
     # Elements
 
     def firstname_textfield(self):
-        return self.driver.find_element(By.ID, self.__firstname_textfield_id)
+        return self.find_element(self.__firstname_textfield_id)
 
     def lastname_textfield(self):
-        return self.driver.find_element(By.ID, self.__lastname_textfield_id)
+        return self.find_element(self.__lastname_textfield_id)
 
     def email_textfield(self):
-        return self.driver.find_element(By.ID, self.__email_textfield_id)
+        return self.find_element(self.__email_textfield_id)
 
     def telephone_textfield(self):
-        return self.driver.find_element(By.ID, self.__telephone_textfield_id)
+        return self.find_element(self.__telephone_textfield_id)
 
     def address_textfield(self):
-        return self.driver.find_element(By.ID, self.__address_textfield_id)
+        return self.find_element(self.__address_textfield_id)
 
     def city_textfield(self):
-        return self.driver.find_element(By.ID, self.__city_textfield_id)
+        return self.find_element(self.__city_textfield_id)
 
     def country_dropdown(self):
-        return self.driver.find_element(By.ID, self.__country_dropdown_id)
+        return self.find_element(self.__country_dropdown_id)
 
     def region_dropdown(self):
-        return self.driver.find_element(By.ID, self.__region_dropdown_id)
+        return self.find_element(self.__region_dropdown_id)
 
     def password_field(self):
-        return self.driver.find_element(By.ID, self.__password_field_id)
+        return self.find_element(self.__password_field_id)
 
     def confirm_password_field(self):
-        return self.driver.find_element(By.ID, self.__confirm_password_field_id)
+        return self.find_element(self.__confirm_password_field_id)
 
     def agree_checkbox(self):
-        return self.driver.find_element(By.NAME, self.__agree_checkbox_name)
+        return self.find_element(self.__agree_checkbox_name)
 
     def submit_btn(self):
-        return self.driver.find_element(By.XPATH, self.__submit_btn_xpath)
+        return self.find_element(self.__submit_btn_xpath)
 
     # Business logic
 
