@@ -30,3 +30,13 @@ class TestLogin:
                          submit=True)
         lp.account_btn().click()
         assert lp.logout_btn().is_displayed()
+
+    def test_login_invalid_creds(self, setup):
+        text = 'E-Mail і/чи пароль не співпадають.'
+        hp = HomePage(setup)
+        hp.open_login_form()
+        lp = LoginPage(setup)
+        lp.fill_the_form(email=CredentialsStrings().random_email, password=CredentialsStrings().random_password,
+                         submit=True)
+        lp.account_btn().click()
+        assert lp.alert_message().text == text
