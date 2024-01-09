@@ -4,6 +4,7 @@ from pathlib import Path
 from pytest import fixture
 from config import Config
 from utils.driver import Driver
+from utils.logger import Logger
 
 data_path = os.path.join(Path(__file__).absolute().parent.parent, 'data', 'test_data.json')
 
@@ -16,6 +17,7 @@ def pytest_addoption(parser):
 
 @fixture()
 def parameters(request):
+    Logger().log().info(f'Test name: {request.node.name}')
     return {'browser': request.config.getoption("--browser"),
             'headless': request.config.getoption("--headless")}
 
