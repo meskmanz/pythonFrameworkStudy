@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 from components.top_menu_component import TopMenuComponent
 from pages.base_page import BasePage
-from utils.logger import Logger
 
 
 class HomePage(BasePage, TopMenuComponent):
@@ -11,7 +10,6 @@ class HomePage(BasePage, TopMenuComponent):
     __search_textfield_xpath = f'{__search_form_xpath}/input'
     __search_btn_xpath = f'{__search_form_xpath}/span/button'
     __result_label_xpath = '//div[@id="content"]/h1'
-    log = Logger().log()
 
     # Elements
 

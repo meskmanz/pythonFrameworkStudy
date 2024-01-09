@@ -1,5 +1,3 @@
-from utils.logger import Logger
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
@@ -19,7 +17,6 @@ class AccountRegisterPage(BasePage):
     __confirm_password_field_id = 'input-confirm'
     __agree_checkbox_name = 'agree'
     __submit_btn_xpath = '//input[@type="submit"]'
-    log = Logger().log()
 
     # Elements
 

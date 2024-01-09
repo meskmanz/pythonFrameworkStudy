@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 from components.base_component import BaseComponent
-from utils.logger import Logger
 
 
 class TopMenuComponent(BaseComponent):
@@ -9,8 +8,6 @@ class TopMenuComponent(BaseComponent):
     __register_xpath = '//div[@id="top-links"]//a[contains(@href, "register")]'
     __login_xpath = '//div[@id="top-links"]//a[contains(@href, "login")]'
     __logout_xpath = '//div[@id="top-links"]//a[contains(@href, "logout")]'
-
-    log = Logger().log()
 
     def account_btn(self):
         return self.driver.find_element(By.XPATH, self.__account_xpath)
