@@ -20,7 +20,7 @@ class Driver:
             web_driver = self._firefox_driver(headless=headless)
         else:
             raise Exception(f'{browser} is not supported browsers')
-        web_driver.implicitly_wait(10)  # seconds
+        #web_driver.implicitly_wait(10)  # seconds
         return web_driver
 
     def _chrome_driver(self, headless):

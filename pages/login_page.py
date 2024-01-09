@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from components.top_menu_component import TopMenuComponent
+from components.top_menu_page import TopMenuComponent
 from pages.accout_register_page import AccountRegisterPage
 
 

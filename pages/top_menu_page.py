@@ -1,9 +1,8 @@
 from selenium.webdriver.common.by import By
+from pages.base_page import BasePage
 
-from components.base_component import BaseComponent
 
-
-class TopMenuComponent(BaseComponent):
+class TopMenuPage(BasePage):
     __account_xpath = '//div[@id="top-links"]/ul/li/a[@class="dropdown-toggle"]'
     __register_xpath = '//div[@id="top-links"]//a[contains(@href, "register")]'
     __login_xpath = '//div[@id="top-links"]//a[contains(@href, "login")]'
