@@ -7,57 +7,57 @@ from pages.base_page import BasePage
 
 
 class AccountRegisterPage(BasePage):
-    _firstname_textfield_id = 'input-firstname'
-    _lastname_textfield_id = 'input-lastname'
-    _email_textfield_id = 'input-email'
-    _telephone_textfield_id = 'input-telephone'
-    _address_textfield_id = 'input-address-1'
-    _city_textfield_id = 'input-city'
-    _country_dropdown_id = 'input-country'
-    _region_dropdown_id = 'input-zone'
-    _password_field_id = 'input-password'
-    _confirm_password_field_id = 'input-confirm'
-    _agree_checkbox_name = 'agree'
-    _submit_btn_xpath = '//input[@type="submit"]'
+    __firstname_textfield_id = 'input-firstname'
+    __lastname_textfield_id = 'input-lastname'
+    __email_textfield_id = 'input-email'
+    __telephone_textfield_id = 'input-telephone'
+    __address_textfield_id = 'input-address-1'
+    __city_textfield_id = 'input-city'
+    __country_dropdown_id = 'input-country'
+    __region_dropdown_id = 'input-zone'
+    __password_field_id = 'input-password'
+    __confirm_password_field_id = 'input-confirm'
+    __agree_checkbox_name = 'agree'
+    __submit_btn_xpath = '//input[@type="submit"]'
     log = Logger().log()
 
     # Elements
 
     def firstname_textfield(self):
-        return self.driver.find_element(By.ID, self._firstname_textfield_id)
+        return self.driver.find_element(By.ID, self.__firstname_textfield_id)
 
     def lastname_textfield(self):
-        return self.driver.find_element(By.ID, self._lastname_textfield_id)
+        return self.driver.find_element(By.ID, self.__lastname_textfield_id)
 
     def email_textfield(self):
-        return self.driver.find_element(By.ID, self._email_textfield_id)
+        return self.driver.find_element(By.ID, self.__email_textfield_id)
 
     def telephone_textfield(self):
-        return self.driver.find_element(By.ID, self._telephone_textfield_id)
+        return self.driver.find_element(By.ID, self.__telephone_textfield_id)
 
     def address_textfield(self):
-        return self.driver.find_element(By.ID, self._address_textfield_id)
+        return self.driver.find_element(By.ID, self.__address_textfield_id)
 
     def city_textfield(self):
-        return self.driver.find_element(By.ID, self._city_textfield_id)
+        return self.driver.find_element(By.ID, self.__city_textfield_id)
 
     def country_dropdown(self):
-        return self.driver.find_element(By.ID, self._country_dropdown_id)
+        return self.driver.find_element(By.ID, self.__country_dropdown_id)
 
     def region_dropdown(self):
-        return self.driver.find_element(By.ID, self._region_dropdown_id)
+        return self.driver.find_element(By.ID, self.__region_dropdown_id)
 
     def password_field(self):
-        return self.driver.find_element(By.ID, self._password_field_id)
+        return self.driver.find_element(By.ID, self.__password_field_id)
 
     def confirm_password_field(self):
-        return self.driver.find_element(By.ID, self._confirm_password_field_id)
+        return self.driver.find_element(By.ID, self.__confirm_password_field_id)
 
     def agree_checkbox(self):
-        return self.driver.find_element(By.NAME, self._agree_checkbox_name)
+        return self.driver.find_element(By.NAME, self.__agree_checkbox_name)
 
     def submit_btn(self):
-        return self.driver.find_element(By.XPATH, self._submit_btn_xpath)
+        return self.driver.find_element(By.XPATH, self.__submit_btn_xpath)
 
     # Business logic
 
