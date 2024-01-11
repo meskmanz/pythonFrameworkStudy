@@ -16,5 +16,13 @@ pipeline {
                 sh 'pytest --headless=True'
             }
         }
+        post {
+                always {
+                    allure includeProperties:
+                     false,
+                     jdk: '',
+                     results: [[path: 'build/allure-results']]
+                }
+            }
     }
 }
