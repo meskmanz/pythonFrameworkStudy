@@ -16,7 +16,8 @@ pipeline {
                 sh 'pytest --headless=True'
             }
         }
-        post {
+        stage('Generate Report') {
+            post {
                 always {
                     allure includeProperties:
                      false,
@@ -24,5 +25,7 @@ pipeline {
                      results: [[path: 'build/allure-results']]
                 }
             }
+        }
+
     }
 }
