@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'pytest --headless=True'
+                sh 'pytest --headless=True --alluredir=allure-results'
             }
         }
     }
@@ -22,7 +22,7 @@ pipeline {
             allure includeProperties:
              false,
              jdk: '',
-             results: [[path: 'build/allure-results']]
+             results: [[path: 'allure-results']]
         }
     }
 }
