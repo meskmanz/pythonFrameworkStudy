@@ -1,29 +1,28 @@
 from selenium.webdriver.common.by import By
 
-from components.top_menu_component import TopMenuComponent
-from pages.base_page import BasePage
+from pages.top_menu_page import TopMenuPage
 
 
-class HomePage(BasePage, TopMenuComponent):
-    __logo_xpath = '//div[@id="logo"]/a/img'
-    __search_form_xpath = '//div[@id="search"]'
-    __search_textfield_xpath = f'{__search_form_xpath}/input'
-    __search_btn_xpath = f'{__search_form_xpath}/span/button'
-    __result_label_xpath = '//div[@id="content"]/h1'
+class HomePage(TopMenuPage):
+    __logo_xpath = (By.XPATH, '//div[@id="logo"]/a/img')
+    __search_form_xpath = (By.XPATH, '//div[@id="search"]')
+    __search_textfield_xpath = (By.XPATH, f'{__search_form_xpath[1]}/input')
+    __search_btn_xpath = (By.XPATH, f'{__search_form_xpath[1]}/span/button')
+    __result_label_xpath = (By.XPATH, '//div[@id="content"]/h1')
 
     # Elements
 
     def logo_img(self):
-        return self.driver.find_element(By.XPATH, self.__logo_xpath)
+        return self.find_element(self.__logo_xpath)
 
     def search_text_field(self):
-        return self.driver.find_element(By.XPATH, self.__search_textfield_xpath)
+        return self.find_element(self.__search_textfield_xpath)
 
     def search_btn(self):
-        return self.driver.find_element(By.XPATH, self.__search_btn_xpath)
+        return self.find_element(self.__search_btn_xpath)
 
     def result_label(self):
-        return self.driver.find_element(By.XPATH, self.__result_label_xpath)
+        return self.find_element(self.__result_label_xpath)
 
     # Business Logic
 
