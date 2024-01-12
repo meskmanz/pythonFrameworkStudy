@@ -40,3 +40,6 @@ class TestLogin:
                          submit=True)
         lp.account_btn().click()
         assert lp.alert_message().text == text
+
+    def test_fails(self, setup):
+        assert False
