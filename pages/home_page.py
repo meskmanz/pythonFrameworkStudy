@@ -1,14 +1,19 @@
 from selenium.webdriver.common.by import By
 
-from pages.top_menu_page import TopMenuPage
+from components.top_menu_component import TopMenuComponent
+from pages.base_page import BasePage
 
 
-class HomePage(TopMenuPage):
+class HomePage(BasePage):
     __logo_xpath = (By.XPATH, '//div[@id="logo"]/a/img')
     __search_form_xpath = (By.XPATH, '//div[@id="search"]')
     __search_textfield_xpath = (By.XPATH, f'{__search_form_xpath[1]}/input')
     __search_btn_xpath = (By.XPATH, f'{__search_form_xpath[1]}/span/button')
     __result_label_xpath = (By.XPATH, '//div[@id="content"]/h1')
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.top_menu = TopMenuComponent(driver)
 
     # Elements
 

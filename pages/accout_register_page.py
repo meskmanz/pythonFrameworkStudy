@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from pages.top_menu_page import TopMenuPage
+
+from pages.base_page import BasePage
 
 
-class AccountRegisterPage(TopMenuPage):
+class AccountRegisterPage(BasePage):
     __firstname_textfield_id = (By.ID, 'input-firstname')
     __lastname_textfield_id = (By.ID, 'input-lastname')
     __email_textfield_id = (By.ID, 'input-email')
